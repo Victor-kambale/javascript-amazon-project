@@ -96,6 +96,6 @@ console.log(productsHTML);
 
 // ↓
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
-// == ✅✊👌 III. MAKE IT INTERACTIVE == //
+// === ✅✊👌 III. MAKE IT INTERACTIVE === //
 
 // STOP ON 11:50
