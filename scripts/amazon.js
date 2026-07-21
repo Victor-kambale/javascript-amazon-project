@@ -96,7 +96,9 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
+            product.id
+          }">
             Add to Cart
           </button>
         </div>
@@ -107,5 +109,35 @@ console.log(productsHTML);
 // ↓
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 // === ✅✊👌 III. MAKE IT INTERACTIVE === //
+document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    const productId = button.dataset.productId;
 
-// STOP ON 11:55:00
+    // Steps
+    // [1. Check if the product is already in the cart]
+
+    let matchingItem;
+
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchingItem = item;
+      }
+    });
+
+    // [2.  if its in the cart , increase the quantity] AND
+    // [3.  if its not in the cart, add it to the cart.]
+
+    if (matchingItem) {
+      matchingItem.quantity += 1;
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1,
+      });
+    }
+
+    console.log(cart);
+  });
+});
+
+// STOP ON 12:18:00 DONE 12:27
