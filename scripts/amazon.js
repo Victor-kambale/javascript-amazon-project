@@ -136,8 +136,19 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       });
     }
 
-    console.log(cart);
+    // NEXT STEPS:
+    // [1. Calculate the quantity.]
+
+    let cartQuantity = 0;
+
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+
+    // [2. Put the quantity on the page. by using the DOM]
+    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+
   });
 });
 
-// STOP ON 12:18:00 DONE 12:27
+// STOP ON 12:25:45 DONE 12:27
