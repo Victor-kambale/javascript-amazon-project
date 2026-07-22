@@ -49,7 +49,7 @@
 
 // -combine this html together,
 
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 let productsHTML = "";
@@ -108,49 +108,29 @@ products.forEach((product) => {
         </div>
   `;
 });
-console.log(productsHTML);
 
-// ↓
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
+
+// func
+function updateCartQuantity() {
+  // [1. Calculate the quantity.]
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+  // [2. Put the quantity on the page. by using the DOM]
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+}
+
 // === ✅✊👌 III. MAKE IT INTERACTIVE === //
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
     const productId = button.dataset.productId;
-
-    // Steps
-    // [1. Check if the product is already in the cart]
-
-    let matchingItem;
-
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item;
-      }
-    });
-
-    // [2.  if its in the cart , increase the quantity] AND
-    // [3.  if its not in the cart, add it to the cart.]
-
-    if (matchingItem) {
-      matchingItem.quantity += 1;
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1,
-      });
-    }
-
-    // NEXT STEPS:
-    // [1. Calculate the quantity.]
-
-    let cartQuantity = 0;
-
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-
-    // [2. Put the quantity on the page. by using the DOM]
-    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+    // call function addToCart()
+    addToCart(productId);
+    // call function updateCartQuantity()
+    updateCartQuantity();
   });
 });
 
@@ -159,4 +139,4 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 // ================================================  //
 // START (LESSON 14) MODULES: ➡️ 12: 28 until 13: 56: 34
 
-// STOP 12:45:00
+// STOP 12:55:00
