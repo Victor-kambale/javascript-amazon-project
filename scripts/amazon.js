@@ -50,6 +50,7 @@
 // -combine this html together,
 
 import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let productsHTML = "";
 
@@ -158,4 +159,4 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 // ================================================  //
 // START (LESSON 14) MODULES: ➡️ 12: 28 until 13: 56: 34
 
-// STOP 12:40:59
+// STOP 12:45:00
