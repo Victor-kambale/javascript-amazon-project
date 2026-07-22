@@ -48,6 +48,9 @@
 // == ✅✊👌 II. GENERATE HTML [-combine this html together, -put it on the web page] == //
 
 // -combine this html together,
+
+import { cart } from "../data/cart.js";
+
 let productsHTML = "";
 
 products.forEach((product) => {
@@ -147,8 +150,12 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     // [2. Put the quantity on the page. by using the DOM]
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
-
   });
 });
 
-// STOP ON 12:25:45 DONE 12:27
+// STOP AND DONE (LESSON 13) 12:27:59 ✅✊
+
+// ================================================  //
+// START (LESSON 14) MODULES: ➡️ 12: 28 until 13: 56: 34
+
+// STOP 12:40:59
