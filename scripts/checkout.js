@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, removeFormatCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -19,8 +19,6 @@ cart.forEach((cartItem) => {
       matchingProduct = product;
     }
   });
-
-  console.log(matchingProduct);
 
   //3
   cartSummaryHTML += `
@@ -47,7 +45,9 @@ cart.forEach((cartItem) => {
           <span class="update-quantity-link link-primary">
             Update
           </span>
-          <span class="delete-quantity-link link-primary">
+          <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
+            matchingProduct.id
+          }">
             Delete
           </span>
         </div>
@@ -104,5 +104,20 @@ cart.forEach((cartItem) => {
 
 //3
 document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
+
+// 5 make it interactive after done to fix the formatting selectors and money.js
+
+// ==>👌➡️✅ u are commended to add this first js-delete-link" data-product-id="${matchingProduct.id} to the delete
+document.querySelectorAll(".js-delete-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    const productId = link.dataset.productId;
+
+    // #1 Remove product from cart [u have to create first this func on cart.js]
+    removeFormatCart(productId);
+
+
+    // #2 Update the HTML
+  });
+});
 
 // STOP 13:01:32
