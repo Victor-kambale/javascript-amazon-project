@@ -22,7 +22,8 @@ cart.forEach((cartItem) => {
 
   //3
   cartSummaryHTML += `
-  <div class="cart-item-container">
+  <div class="cart-item-container 
+  js-cart-item-container-${matchingProduct.id}">
     <div class="delivery-date">
       Delivery date: Tuesday, June 21
     </div>
@@ -115,9 +116,14 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
     // #1 Remove product from cart [u have to create first this func on cart.js]
     removeFormatCart(productId);
 
+    // #2 Update the HTML [steps: 1. use DOM to get elt to remove, 2. Use .remove() method]  ===> add this first to the top  js-cart-item-container-${matchingProduct.id} where we have //3
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
 
-    // #2 Update the HTML
+    container.remove();
+    
   });
 });
 
-// STOP 13:01:32
+// STOP 13:50:32
